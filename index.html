@@ -243,6 +243,8 @@
             padding: 2rem;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
         
         .menu-category:hover {
@@ -254,10 +256,25 @@
             color: var(--primary);
             margin-bottom: 1.5rem;
             font-size: 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .menu-category-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            opacity: 0.2;
+            z-index: 1;
         }
         
         .menu-item {
             margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 2;
         }
         
         .menu-item-header {
@@ -280,9 +297,46 @@
             color: #666;
         }
         
+        /* Atmosphere Gallery */
+        #atmosphere {
+            background-color: white;
+            padding: 4rem 0;
+        }
+        
+        .gallery-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .gallery-item {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            aspect-ratio: 1/1;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.03);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
         /* Contact Section */
         #contact {
-            background-color: white;
+            background-color: var(--light);
         }
         
         .contact-container {
@@ -322,7 +376,7 @@
             justify-content: center;
             width: 40px;
             height: 40px;
-            background-color: var(--light);
+            background-color: white;
             color: var(--primary);
             border-radius: 50%;
             transition: all 0.3s ease;
@@ -464,6 +518,16 @@
             .btn-outline {
                 margin-left: 0;
             }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
@@ -478,6 +542,7 @@
                 <li><a href="#hero">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#menu">Menu</a></li>
+                <li><a href="#atmosphere">Atmosphere</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
@@ -524,6 +589,7 @@
             
             <div class="menu-categories">
                 <div class="menu-category fade-in">
+                    <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Coffee" class="menu-category-img">
                     <h3>Coffee</h3>
                     <div class="menu-item">
                         <div class="menu-item-header">
@@ -556,6 +622,7 @@
                 </div>
                 
                 <div class="menu-category fade-in delay-1">
+                    <img src="https://images.unsplash.com/photo-1558160074-4d7d8bdf4256?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Tea" class="menu-category-img">
                     <h3>Tea & More</h3>
                     <div class="menu-item">
                         <div class="menu-item-header">
@@ -588,6 +655,7 @@
                 </div>
                 
                 <div class="menu-category fade-in delay-2">
+                    <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Pastries" class="menu-category-img">
                     <h3>Pastries</h3>
                     <div class="menu-item">
                         <div class="menu-item-header">
@@ -617,6 +685,40 @@
                         </div>
                         <p class="menu-item-desc">Sourdough toast with smashed avocado, cherry tomatoes, and microgreens.</p>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Atmosphere Gallery Section -->
+    <section id="atmosphere">
+        <div class="container">
+            <div class="gallery-title fade-in">
+                <h2>Our Atmosphere</h2>
+                <p>Experience the calming ambiance of Calm Coffee through these glimpses of our space and creations.</p>
+            </div>
+            
+            <div class="gallery-grid fade-in">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1463797221720-6b07e6426c24?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Café interior">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Barista making coffee">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Coffee on table">
+                </div>
+            </div>
+            
+            <div class="gallery-grid fade-in delay-1">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Coffee beans">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1498804103079-a6351b050096?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Café seating area">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1512309666124-68b7a5d875d0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Latte art">
                 </div>
             </div>
         </div>
@@ -671,6 +773,7 @@
                     <li><a href="#hero">Home</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#menu">Menu</a></li>
+                    <li><a href="#atmosphere">Atmosphere</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
                 <p class="copyright">© 2023 Calm Coffee. All rights reserved.</p>
