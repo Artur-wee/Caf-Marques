@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Café Marquês - A melhor cafeteria de Joinville</title>
+    <title>Calm Coffee - O seu refúgio de café</title>
     <style>
-        /* CSS Reset */
+        /* Reset and Base Styles */
         * {
             margin: 0;
             padding: 0;
@@ -13,273 +13,252 @@
             font-family: 'Montserrat', sans-serif;
         }
 
-        /* Variáveis CSS */
-        :root {
-            --primary-color: #6F4E37;
-            --secondary-color: #C4A484;
-            --light-color: #F5F5DC;
-            --dark-color: #3E2723;
-            --accent-color: #8D6E63;
+        body {
+            background-color: #f9f5f0;
+            color: #3a2e26;
+            line-height: 1.6;
         }
 
-        /* Estilos Gerais */
-        body {
-            background-color: var(--light-color);
-            color: var(--dark-color);
-            line-height: 1.6;
+        /* Typography */
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: #3a2e26;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50%;
+            height: 3px;
+            background-color: #c7a17a;
+        }
+
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Layout */
+        section {
+            padding: 5rem 10%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
         }
 
-        /* Header */
+        /* Header & Navigation */
         header {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 20px 0;
-            text-align: center;
-            position: relative;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(249, 245, 240, 0.9);
+            z-index: 1000;
+            padding: 1rem 10%;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .logo {
-            font-size: 2.5rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
             font-weight: 700;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
+            color: #3a2e26;
+            text-decoration: none;
         }
 
-        .slogan {
-            font-style: italic;
-            font-size: 1.2rem;
-            opacity: 0.9;
-        }
-
-        /* Navigation */
-        nav {
-            background-color: var(--dark-color);
-            padding: 15px 0;
-        }
-
-        nav ul {
+        .nav-links {
             display: flex;
-            justify-content: center;
             list-style: none;
         }
 
-        nav ul li {
-            margin: 0 15px;
+        .nav-links li {
+            margin-left: 2rem;
         }
 
-        nav ul li a {
-            color: white;
+        .nav-links a {
+            color: #3a2e26;
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.3s;
+            transition: color 0.3s ease;
+            position: relative;
         }
 
-        nav ul li a:hover {
-            color: var(--secondary-color);
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #c7a17a;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #c7a17a;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
         }
 
         /* Hero Section */
-        .hero {
-            height: 500px;
-            background-image: url('https://images.unsplash.com/photo-1445116572660-236099ec97a0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            color: white;
+        #home {
+            background: linear-gradient(rgba(58, 46, 38, 0.7), rgba(58, 46, 38, 0.7)), url('https://images.unsplash.com/photo-1445116572660-236099ec97a0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            color: #f9f5f0;
             text-align: center;
-            padding: 20px;
+            padding-top: 8rem;
         }
 
-        .hero-content h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
+        #home h1 {
+            color: #f9f5f0;
+            font-size: 4.5rem;
+            margin-bottom: 1.5rem;
+            animation: fadeIn 1.5s ease;
         }
 
-        .hero-content p {
-            font-size: 1.2rem;
+        #home p {
+            font-size: 1.3rem;
             max-width: 700px;
-            margin: 0 auto 30px;
+            margin: 0 auto 2rem;
+            animation: fadeIn 2s ease;
         }
 
         .btn {
             display: inline-block;
-            background-color: var(--secondary-color);
-            color: var(--dark-color);
-            padding: 12px 30px;
+            background-color: #c7a17a;
+            color: #f9f5f0;
+            padding: 0.8rem 2rem;
             border-radius: 30px;
             text-decoration: none;
             font-weight: 600;
-            transition: all 0.3s;
+            transition: all 0.3s ease;
+            border: 2px solid #c7a17a;
+            animation: fadeIn 2.5s ease;
         }
 
         .btn:hover {
-            background-color: white;
-            transform: translateY(-3px);
+            background-color: transparent;
+            color: #c7a17a;
         }
 
         /* About Section */
-        .section {
-            padding: 80px 0;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 50px;
-            color: var(--primary-color);
+        #about {
+            background-color: #f9f5f0;
         }
 
         .about-content {
-            display: flex;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
             align-items: center;
-            gap: 40px;
         }
 
         .about-text {
-            flex: 1;
-        }
-
-        .about-text h3 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            color: var(--dark-color);
+            padding-right: 2rem;
         }
 
         .about-image {
-            flex: 1;
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
 
         .about-image img {
             width: 100%;
             height: auto;
             display: block;
-            transition: transform 0.5s;
+            transition: transform 0.5s ease;
         }
 
-        .about-image img:hover {
+        .about-image:hover img {
             transform: scale(1.05);
         }
 
         /* Menu Section */
-        .menu {
-            background-color: #f9f9f9;
+        #menu {
+            background-color: #f0e6d9;
         }
 
-        .menu-items {
+        .menu-container {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .menu-category {
+            margin-bottom: 3rem;
         }
 
         .menu-item {
-            background-color: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
+            background-color: #f9f5f0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .menu-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         }
 
-        .menu-item-image {
-            height: 200px;
-            overflow: hidden;
-        }
-
-        .menu-item-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-
-        .menu-item:hover .menu-item-image img {
-            transform: scale(1.1);
-        }
-
-        .menu-item-content {
-            padding: 20px;
-        }
-
-        .menu-item-title {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            color: var(--primary-color);
-        }
-
-        .menu-item-price {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--accent-color);
-            margin-bottom: 15px;
+        .menu-item h3 {
+            color: #c7a17a;
+            margin-bottom: 0.5rem;
         }
 
         /* Gallery Section */
-        .gallery {
+        #gallery {
+            background-color: #f9f5f0;
+        }
+
+        .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
         }
 
         .gallery-item {
-            height: 250px;
+            border-radius: 8px;
             overflow: hidden;
-            border-radius: 10px;
             position: relative;
+            height: 250px;
         }
-        
-        .gallery-item-banner {
-            height: 300px;
-            width: 310%;
-            height: auto;
-            overflow: hidden;
-            border-radius: 10px;
-            margin-bottom: 30px;
-        }
-
-        .gallery-item-banner img {
-            width: 100%;
-            height: auto;
-            display: block;
-            object-fit: cover;
-        }
-        
 
         .gallery-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s;
+            transition: transform 0.5s ease;
         }
 
         .gallery-item:hover img {
@@ -287,295 +266,297 @@
         }
 
         /* Contact Section */
-        .contact {
-            background-color: var(--dark-color);
-            color: white;
+        #contact {
+            background: linear-gradient(rgba(58, 46, 38, 0.8), rgba(58, 46, 38, 0.8)), url('https://maps.googleapis.com/maps/api/staticmap?center=-23.5505,-46.6333&zoom=15&size=800x600&scale=2&maptype=roadmap&markers=color:red%7C-23.5505,-46.6333&key=YOUR_API_KEY') no-repeat center center/cover;
+            color: #f9f5f0;
         }
 
-        .contact .section-title {
-            color: var(--secondary-color);
-        }
-
-        .contact-content {
+        .contact-container {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 40px;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
         }
 
         .contact-info h3 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            color: var(--secondary-color);
+            color: #c7a17a;
+            margin-bottom: 1.5rem;
         }
 
         .contact-info p {
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-        }
-
-        .contact-info i {
-            margin-right: 10px;
-            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
         }
 
         .social-links {
             display: flex;
-            gap: 15px;
-            margin-top: 20px;
+            margin-top: 2rem;
         }
 
         .social-links a {
-            display: inline-flex;
+            display: flex;
             align-items: center;
             justify-content: center;
             width: 40px;
             height: 40px;
-            background-color: var(--secondary-color);
-            color: var(--dark-color);
+            background-color: #c7a17a;
+            color: #f9f5f0;
             border-radius: 50%;
+            margin-right: 1rem;
             text-decoration: none;
-            transition: all 0.3s;
+            transition: all 0.3s ease;
         }
 
         .social-links a:hover {
-            background-color: white;
+            background-color: #f9f5f0;
+            color: #c7a17a;
             transform: translateY(-3px);
-        }
-
-        .map-container {
-            height: 100%;
-            min-height: 300px;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        .map-container iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
         }
 
         /* Footer */
         footer {
-            background-color: var(--primary-color);
-            color: white;
+            background-color: #3a2e26;
+            color: #f9f5f0;
             text-align: center;
-            padding: 20px 0;
+            padding: 2rem 10%;
         }
 
-        /* Responsividade */
-        @media (max-width: 768px) {
-            .about-content {
-                flex-direction: column;
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #f9f5f0;
+        }
+
+        .copyright {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            section {
+                padding: 4rem 5%;
             }
 
-            .contact-content {
+            .about-content, .contact-container {
                 grid-template-columns: 1fr;
             }
 
-            .gallery {
-                grid-template-columns: repeat(2, 1fr);
+            .about-text {
+                padding-right: 0;
+                margin-bottom: 2rem;
             }
         }
 
-        @media (max-width: 480px) {
-            nav ul {
-                flex-direction: column;
-                align-items: center;
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
             }
 
-            nav ul li {
-                margin: 5px 0;
-            }
-
-            .hero-content h1 {
+            h2 {
                 font-size: 2rem;
             }
 
-            .gallery {
+            .nav-links {
+                display: none;
+            }
+
+            .menu-container {
                 grid-template-columns: 1fr;
             }
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
+    <!-- Header -->
     <header>
-        <div class="container">
-            <div class="logo">Café Marquês</div>
-            <div class="slogan">O melhor café de Joinville, feito com paixão</div>
-        </div>
-    </header>
-
-    <nav>
-        <div class="container">
-            <ul>
+        <nav>
+            <a href="#home" class="logo">Calm Coffee</a>
+            <ul class="nav-links">
                 <li><a href="#home">Início</a></li>
                 <li><a href="#about">Sobre</a></li>
-                <li><a href="#menu">Cardápio</a></li>
+                <li><a href="#menu">Menu</a></li>
                 <li><a href="#gallery">Galeria</a></li>
                 <li><a href="#contact">Contato</a></li>
             </ul>
-        </div>
-    </nav>
+        </nav>
+    </header>
 
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <h1>Bem-vindo ao Café Marquês</h1>
-            <p>Descubra o sabor autêntico do café em um ambiente acolhedor e sofisticado no coração de Joinville.</p>
-            <a href="#menu" class="btn">Conheça nosso cardápio</a>
+    <!-- Hero Section -->
+    <section id="home">
+        <div class="container">
+            <h1>Calm Coffee</h1>
+            <p>Um refúgio acolhedor onde cada xícara conta uma história e cada momento é uma pausa merecida no seu dia.</p>
+            <a href="#menu" class="btn">Explore Nosso Menu</a>
         </div>
     </section>
 
-    <section class="section" id="about">
+    <!-- About Section -->
+    <section id="about">
         <div class="container">
-            <h2 class="section-title">Sobre Nós</h2>
+            <h2>Sobre Nós</h2>
             <div class="about-content">
                 <div class="about-text">
-                    <h3>Nossa História</h3>
-                    <p>O Café Marquês nasceu da paixão por café de qualidade e pelo desejo de criar um espaço onde as pessoas possam se encontrar, trabalhar ou simplesmente relaxar com uma boa xícara de café.</p>
-                    <p>Desde 2015, estamos localizados na Rua Marquês de Olinda, no coração de Joinville, servindo os melhores grãos selecionados de diversas regiões do Brasil e do mundo.</p>
-                    <p>Nossa equipe de baristas altamente qualificados está sempre pronta para preparar a bebida perfeita para você, seja um espresso clássico ou uma criação exclusiva da casa.</p>
+                    <p>Bem-vindo ao Calm Coffee, onde transformamos o simples ato de tomar café em uma experiência memorável. Fundado em 2015, nosso café nasceu da paixão por criar um espaço onde as pessoas pudessem desacelerar e apreciar os pequenos prazeres da vida.</p>
+                    <p>Nossos grãos são cuidadosamente selecionados de fazendas sustentáveis em todo o mundo, torrados localmente para garantir frescor e sabor excepcionais em cada xícara.</p>
+                    <p>Mais do que um café, somos uma comunidade. Um lugar onde histórias são compartilhadas, ideias nascem e amizades são cultivadas.</p>
                 </div>
                 <div class="about-image">
-                    <img src="https://scontent.fjoi10-1.fna.fbcdn.net/v/t39.30808-6/488930934_1291488172706591_7756698828550209614_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=127cfc&_nc_ohc=kEQm9O9jVoEQ7kNvwHpllzc&_nc_oc=Adn-qZe4v1cPJqab9o_g-_otA10uav4xJndfArsrraeho3DX4vRa2_1GSLHU8cyloEToOCg39xx0tyNCM7sfr3EO&_nc_zt=23&_nc_ht=scontent.fjoi10-1.fna&_nc_gid=Jkr9w5Rzv-zxop8DxGa-3w&oh=00_AfIFlU5mYl_2MNFf1MWjrDE4t5d63TKXGDK2aOtVJzkGMA&oe=683A490A" alt="Interior do Café Marquês">
+                    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Fachada do Calm Coffee">
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="section menu" id="menu">
+    <!-- Menu Section -->
+    <section id="menu">
         <div class="container">
-            <h2 class="section-title">Nosso Cardápio</h2>
-            <div class="menu-items">
-                <div class="menu-item">
-                    <div class="menu-item-image">
-                        <img src="https://scontent.fjoi10-1.fna.fbcdn.net/v/t51.75761-15/498294466_18363711865177434_8418124867570411787_n.webp?stp=dst-jpg_tt6&_nc_cat=107&ccb=1-7&_nc_sid=127cfc&_nc_ohc=cGP8lN1n5qMQ7kNvwGSXgMn&_nc_oc=AdnMsfR6-pjM7a2SDX2XFbn0_AP3mpoNbrsO2LHkoBSCBOxwOS8hLhI01SQ1S6MWeZM-v9n-0m-S_kzo11RRlAVe&_nc_zt=23&_nc_ht=scontent.fjoi10-1.fna&_nc_gid=RwQrk6VhS3K2f3VyTuybOA&oh=00_AfKm5Hv1baaPJneieGfnlaAPjQHg_tWBi8UGVi8nrqU0WQ&oe=683A264F" alt="Café Especial">
+            <h2>Nosso Menu</h2>
+            <div class="menu-container">
+                <div class="menu-category">
+                    <h3>Cafés Especiais</h3>
+                    <div class="menu-item">
+                        <h3>Expresso Calm</h3>
+                        <p>Nosso blend exclusivo, com notas de chocolate amargo e nozes, finalizado com um toque cítrico.</p>
                     </div>
-                    <div class="menu-item-content">
-                        <h3 class="menu-item-title">Pão com Bolinho</h3>
-                        <p>Pão com bolinho artesanal: carne temperada na medida, no pão crocante. Simples, delicioso e feito na hora!</p>
+                    <div class="menu-item">
+                        <h3>Latte Artístico</h3>
+                        <p>Espresso suave com leite vaporizado, adornado com arte latte personalizada.</p>
                     </div>
-                </div>
-
-                <div class="menu-item">
-                    <div class="menu-item-image">
-                        <img src="https://scontent.fjoi10-1.fna.fbcdn.net/v/t51.75761-15/496492808_18362377831177434_6570152329576416767_n.webp?stp=dst-jpg_tt6&_nc_cat=100&ccb=1-7&_nc_sid=127cfc&_nc_ohc=11Dmc2kmYEgQ7kNvwFngn2a&_nc_oc=Adm_Dbw2Y1hmAzZanAVf3x99Fhad06wJNVpz9b0xXLKdy3MOiyQ78tgkOYkixFs0UR8-Fg7T4JyYexvMafwk4jtz&_nc_zt=23&_nc_ht=scontent.fjoi10-1.fna&_nc_gid=BKCNGxWbB6em51Bgu6Nupw&oh=00_AfJaI3ia8akkZ8W_VO-sIKGyHItlEqNVgO9CH8I54fLi-A&oe=683A3C09" alt="Cappuccino">
-                    </div>
-                    <div class="menu-item-content">
-                        <h3 class="menu-item-title">Bolo Sensação</h3>
-                        <p>Massa fofinha, recheio de morango com chocolate e cobertura irresistível. Uma delícia que conquista!</p>
+                    <div class="menu-item">
+                        <h3>Cold Brew Serenidade</h3>
+                        <p>Preparado por 18 horas para extrair sabores suaves e menos acidez, servido com gelo.</p>
                     </div>
                 </div>
-
-                <div class="menu-item">
-                    <div class="menu-item-image">
-                        <img src="https://scontent.fjoi10-1.fna.fbcdn.net/v/t51.75761-15/485746060_18356926651177434_3451588319003142740_n.jpg?stp=dst-jpg_tt6&_nc_cat=100&ccb=1-7&_nc_sid=127cfc&_nc_ohc=M3NGVM4rMecQ7kNvwEmOi4n&_nc_oc=AdmLRpx3eOyZ5CJuxMXQAPi-Q8mV1tMhh-Z6SHoH5DnJlpFRpOj8V0tOA7dK6DjEThPAXVTQoV4xJ03Tkrb-tiMq&_nc_zt=23&_nc_ht=scontent.fjoi10-1.fna&_nc_gid=x18NucfZMN2VWznCm7PYAA&oh=00_AfICfgtIUps2n6_DmNKb-7EYqVejHAddGgbqo_tpzcvg9w&oe=683A50E3" alt="Croissant">
+                
+                <div class="menu-category">
+                    <h3>Delícias Doces</h3>
+                    <div class="menu-item">
+                        <h3>Croissant de Amêndoa</h3>
+                        <p>Croissant folhado recheado com creme de amêndoa e coberto com lascas de amêndoas.</p>
                     </div>
-                    <div class="menu-item-content">
-                        <h3 class="menu-item-title">Brigadeiro e Beijinho</h3>
-                        <p>Clássicos brasileiros que encantam! O sabor intenso do chocolate e a delicadeza do coco, perfeitos para adoçar seu momento.</p>
+                    <div class="menu-item">
+                        <h3>Bolo de Café e Nozes</h3>
+                        <p>Bolo úmido com infusão de café, recheio de creme de nozes e cobertura de ganache.</p>
                     </div>
-                </div>
-
-                <div class="menu-item">
-                    <div class="menu-item-image">
-                        <img src="https://scontent.fjoi10-1.fna.fbcdn.net/v/t51.75761-15/495363454_18361766743177434_744350349193244766_n.webp?stp=dst-jpg_tt6&_nc_cat=102&ccb=1-7&_nc_sid=127cfc&_nc_ohc=4ImDrsdXMnsQ7kNvwEyx86e&_nc_oc=AdnoAriZpsDr8NqZrrV0N05obBlde4TSWe4Aw5z7HAeI3icTv1ktGDi9jWf4Y6A0euj1-AY4gW1oFBXkLdCkiLnH&_nc_zt=23&_nc_ht=scontent.fjoi10-1.fna&_nc_gid=dXL624cnXET1zyZqiaMGXg&oh=00_AfJMt9sOL9ZBc9zuMakf--TH1pTW20Nl9a62hpvVQ8PFMQ&oe=683A2C0B" alt="Torta de Limão">
-                    </div>
-                    <div class="menu-item-content">
-                        <h3 class="menu-item-title">Chessecake de Frutras Vermelhas</h3>
-                        <p>Base crocante, creme leve e cobertura de frutas vermelhas frescas. Um equilíbrio perfeito entre doce e azedinho!</p>
+                    <div class="menu-item">
+                        <h3>Cookie Tranquilidade</h3>
+                        <p>Cookie de chocolate meio amargo com nozes e uma pitada de sal marinho.</p>
                     </div>
                 </div>
-
-                <div class="menu-item">
-                    <div class="menu-item-image">
-                        <img src="https://scontent.fjoi10-1.fna.fbcdn.net/v/t51.75761-15/474796658_18349995970177434_42611924019440747_n.jpg?stp=dst-jpg_tt6&_nc_cat=106&ccb=1-7&_nc_sid=127cfc&_nc_ohc=fdAgDbKS6ywQ7kNvwHGkPJI&_nc_oc=Adl0K4BnfRB2YI9wvNMkZ6vIlnWMihEjc51cTLJQqBcZtCxfYZqblLw9W0PMpfoq879M5hhH31Giyq7cNiNokR3D&_nc_zt=23&_nc_ht=scontent.fjoi10-1.fna&_nc_gid=SdpioyShzbo6IAK12CUvYQ&oh=00_AfLOebQsLpxhLHskY9uP_Y5isaFFIynImmuyrBM5SCD7Bg&oe=683A5767" alt="Sanduíche Natural">
+                
+                <div class="menu-category">
+                    <h3>Opções Salgadas</h3>
+                    <div class="menu-item">
+                        <h3>Sanduíche da Paz</h3>
+                        <p>Pão de fermentação natural com frango desfiado, abacate, rúcula e maionese de ervas.</p>
                     </div>
-                    <div class="menu-item-content">
-                        <h3 class="menu-item-title">Doguinho sem Glutem</h3>
-                        <p>Massa leve e fofinha, recheio saboroso e 100% sem glúten. Sabor e cuidado em cada mordida!</p>
+                    <div class="menu-item">
+                        <h3>Quiche Harmonia</h3>
+                        <p>Quiche de espinafre, queijo de cabra e tomates secos com massa crocante.</p>
                     </div>
-                </div>
-
-                <div class="menu-item">
-                    <div class="menu-item-image">
-                        <img src="https://scontent.fjoi10-1.fna.fbcdn.net/v/t51.75761-15/475542047_18350784484177434_3125138492254196712_n.jpg?stp=dst-jpg_tt6&_nc_cat=107&ccb=1-7&_nc_sid=127cfc&_nc_ohc=DBq1UHYY9HAQ7kNvwGcdy8T&_nc_oc=AdkobK9ec2WlgrvkgpIyZFnNxzCOnZ99V7Vj7bzT4pMb--HPSJ4IYzpCqPjl2DY7fC3rdNVxLq8iYhYzFx--vHdW&_nc_zt=23&_nc_ht=scontent.fjoi10-1.fna&_nc_gid=s1rr99t1LHmnQaWP8EO9uQ&oh=00_AfL9_FtM3MZ8IA3bjGPHcBKSvz3uWoCvO3yiZHEsbL3JQg&oe=683A38CC" alt="Smoothie de Frutas">
-                    </div>
-                    <div class="menu-item-content">
-                        <h3 class="menu-item-title">Torta de Queijo</h3>
-                        <p>Massa macia e recheio cremoso de queijos selecionados. Simples, caseira e irresistível!</p>
+                    <div class="menu-item">
+                        <h3>Avocado Toast Zen</h3>
+                        <p>Pão integral torrado com abacate amassado, ovos pochê e sementes de gergelim.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="section" id="gallery">
+    <!-- Gallery Section -->
+    <section id="gallery">
         <div class="container">
-            <h2 class="section-title">Nossa Cafeteria</h2>
-            <div class="gallery">
-                <div class="gallery-item-banner">
-                    <img src="https://scontent.fjoi10-1.fna.fbcdn.net/v/t1.6435-9/45917277_2289100427830039_5488462935745363968_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=2oKmlWSqJ00Q7kNvwGIdcsF&_nc_oc=Adlgo4fxxWKx12FRzUkFHxTK_HpL3YlmYVbXUGDuqOE36OeLOsoZpGaYyS9IF9J0vyw2ygYEnaF-adwIhcJa7kmd&_nc_zt=23&_nc_ht=scontent.fjoi10-1.fna&_nc_gid=I9MTSi786vSp-HzFY9ypqA&oh=00_AfIEAEesurP3T1JIpdp5gO0cjHybKsDybw_TEK84-dSetg&oe=685BD639" alt="banner">
-                </div>
-            </div>
-            <div class="gallery">
+            <h2>Nossa Atmosfera</h2>
+            <div class="gallery-grid">
                 <div class="gallery-item">
-                    <img src="https://scontent.fjoi10-1.fna.fbcdn.net/v/t39.30808-6/464947100_27302487912731278_1233743771607451887_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=a5f93a&_nc_ohc=fBhfX8E0zzEQ7kNvwEt8hHf&_nc_oc=Adk96Jy74kIuIXRf6nNrMzy3u0p8uPau65gCk3V96_VQt9r8WFFH3PTJSSGaQPP5Eef2znbyhKSqIih8dGV4iZNI&_nc_zt=23&_nc_ht=scontent.fjoi10-1.fna&_nc_gid=rSVhO9wYECyqsDHsfMJ7ig&oh=00_AfI0aDxglVb-_u1KrHf10CbLKnCGr26U18Yx3dsbkEOX6A&oe=683A3AB4" alt="Ambiente do Café Marquês">
+                    <img src="https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Interior do café">
                 </div>
                 <div class="gallery-item">
-                    <img src="https://scontent.fjoi10-1.fna.fbcdn.net/v/t39.30808-6/468140260_18342328693177434_8438921115350381236_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=127cfc&_nc_ohc=lGBhhQ_fehUQ7kNvwHMSdgN&_nc_oc=AdmfwfxKGBjSK5b2ca4c16Mqqr1zB-ichjI0DpTTZLQzvpcs3LpDOmGlhvKVQNCsxAb4Ybp3IF9km1ly5B-4pITa&_nc_zt=23&_nc_ht=scontent.fjoi10-1.fna&_nc_gid=Kwj2ICZozahKPtIuuGpvRQ&oh=00_AfJvyFwUOCk3ltQSlh10ZmiGIlFBZwRQhpMOu48meBDdFA&oe=683A5292" alt="Área externa">
+                    <img src="https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Preparo de café">
                 </div>
                 <div class="gallery-item">
-                    <img src="https://scontent.fjoi10-1.fna.fbcdn.net/v/t39.30808-6/489304344_1292177549304320_1010276477589392431_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=127cfc&_nc_ohc=sXMIx8re6Y8Q7kNvwFbdZJb&_nc_oc=Adk505as9a_bRLa2it_5H5zC0rFmLYkDJMHWviBDRhrIf2pGc7ybQX-J-fY3Uuq5wScxyCwckpzsUC_QFc_zIUnR&_nc_zt=23&_nc_ht=scontent.fjoi10-1.fna&_nc_gid=sf-f0mWkEVzQa2iuQUkOVw&oh=00_AfIOlWhbCavGzJ35epRKsJHNfgYU5aD1EDVDyJZRWSmcSg&oe=683A5942" alt="Barista preparando café">
+                    <img src="https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Clientes no café">
                 </div>
                 <div class="gallery-item">
-                    <img src="https://scontent.fjoi10-1.fna.fbcdn.net/v/t39.30808-6/488573685_1290546996134042_8667901389397986028_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=127cfc&_nc_ohc=zI9d6bVfvxsQ7kNvwEeNUD9&_nc_oc=AdkaUID59V8SjB2AcVrFrqaEx0lkqCf1BEXDm5PYK7luwXZfzSX3y8vi9GmcIq8TLEU0CsUeAxrvE1T1o7PwXIPb&_nc_zt=23&_nc_ht=scontent.fjoi10-1.fna&_nc_gid=2E8HrLdzpPu4-ETD3SiqYQ&oh=00_AfLyi18zfzfE_tLPNV3tjUOEoXbbXl1cqiynFMjygMnh8g&oe=683A59F3" alt="Xícaras de café">
+                    <img src="https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Detalhes do café">
                 </div>
                 <div class="gallery-item">
-                    <img src="https://scontent.fjoi10-1.fna.fbcdn.net/v/t39.30808-6/488589507_1289469596241782_1220722283041342132_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=127cfc&_nc_ohc=Ml0w67b3q6gQ7kNvwF1i1pm&_nc_oc=AdmSUnoqpRkIO9VqhK02eNu-8I4U5BdxsCQ9ELRcDghmFi3_NpqRK5H7mcubdVi0OYEWsqTn96xFr7ZHffq1Gjt8&_nc_zt=23&_nc_ht=scontent.fjoi10-1.fna&_nc_gid=-FQoDRHDmuELzDsMdRw48g&oh=00_AfKJZEQI14AxhQAJxDJsvImadhHnFfDiMYA6YIWqnB6R3A&oe=683A55F6" alt="Clientes no café">
+                    <img src="https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Café na mesa">
                 </div>
                 <div class="gallery-item">
-                    <img src="https://scontent.fjoi10-1.fna.fbcdn.net/v/t39.30808-6/465099864_27314618354851567_4348959640702435938_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=-y767u7Lh3sQ7kNvwEGOBhZ&_nc_oc=Adnyt-J1pwJ3CXxD3iH55jn-KulifidZW3_iJ3ArFnhsgIYsIR3-TjTjQx5RXT0lH5Uo8Q5Z5wZ7YEOC9wlRQo1u&_nc_zt=23&_nc_ht=scontent.fjoi10-1.fna&_nc_gid=p5yDEkKZ8EcH_59Hgw3IIA&oh=00_AfJbk0lCLRMKREqRXcAEWkCnMV-tqxEnBoNDBDcFQ_woyg&oe=683A2D2A" alt="Doces e sobremesas">
+                    <img src="https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Barista trabalhando">
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="section contact" id="contact">
+    <!-- Contact Section -->
+    <section id="contact">
         <div class="container">
-            <h2 class="section-title">Entre em Contato</h2>
-            <div class="contact-content">
+            <h2>Visite-nos</h2>
+            <div class="contact-container">
                 <div class="contact-info">
-                    <h3>Informações</h3>
-                    <p><i class="fas fa-map-marker-alt"></i> R. Marquês de Olinda, 1097 - Santo Antônio, Joinville - SC</p>
-                    <p><i class="fas fa-phone"></i> (47) 1234-5678</p>
-                    <p><i class="fas fa-envelope"></i> contato@cafemarques.com.br</p>
-                    <p><i class="fas fa-clock"></i> Seg-Sex: 7:30h-18h | Sáb: 9h-18h | Dom: 15h-18h </p>
-
-                    <h3 style="margin-top: 30px;">Redes Sociais</h3>
+                    <h3>Horário de Funcionamento</h3>
+                    <p>Segunda a Sexta: 7h - 20h</p>
+                    <p>Sábado e Domingo: 8h - 22h</p>
+                    
+                    <h3>Endereço</h3>
+                    <p>Rua da Paz, 123</p>
+                    <p>Jardim Sereno, São Paulo - SP</p>
+                    <p>CEP: 01234-567</p>
+                    
+                    <h3>Contato</h3>
+                    <p>contato@calmcoffee.com</p>
+                    <p>(11) 98765-4321</p>
+                    
                     <div class="social-links">
-                        <a href="https://facebook.com/cafemarques" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
-                <div class="map-container">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3577.123456789012!2d-48.12345678901234!3d-26.123456789012345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjbCsDA3JzI0LjQiUyA0OMKwMDcnMjQuNCJX!5e0!3m2!1spt-BR!2sbr!4v1234567890123!5m2!1spt-BR!2sbr" allowfullscreen="" loading="lazy"></iframe>
-                </div>
             </div>
         </div>
     </section>
 
+    <!-- Footer -->
     <footer>
-        <div class="container">
-            <p>&copy; 2023 Café Marquês. Todos os direitos reservados.</p>
+        <div class="footer-content">
+            <div class="footer-logo">Calm Coffee</div>
+            <p>Siga-nos nas redes sociais para ficar por dentro das novidades e promoções especiais.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            <p class="copyright">© 2023 Calm Coffee. Todos os direitos reservados.</p>
         </div>
     </footer>
 
     <script>
-        // Smooth scrolling for navigation links
+        // Smooth Scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -586,50 +567,42 @@
             });
         });
 
-        // Animation on scroll
-        function animateOnScroll() {
-            const elements = document.querySelectorAll('.about-image, .menu-item, .gallery-item');
+        // Header Scroll Effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.padding = '0.5rem 10%';
+                header.style.background = 'rgba(58, 46, 38, 0.95)';
+            } else {
+                header.style.padding = '1rem 10%';
+                header.style.background = 'rgba(249, 245, 240, 0.9)';
+            }
+        });
+
+        // Animation on Scroll
+        const animateOnScroll = function() {
+            const elements = document.querySelectorAll('.about-content, .menu-item, .gallery-item, .contact-info');
             
             elements.forEach(element => {
                 const elementPosition = element.getBoundingClientRect().top;
                 const screenPosition = window.innerHeight / 1.3;
                 
-                if(elementPosition < screenPosition) {
+                if (elementPosition < screenPosition) {
                     element.style.opacity = '1';
                     element.style.transform = 'translateY(0)';
                 }
             });
-        }
+        };
 
-        // Set initial state for animation
-        window.addEventListener('DOMContentLoaded', () => {
-            const elements = document.querySelectorAll('.about-image, .menu-item, .gallery-item');
-            elements.forEach(element => {
-                element.style.opacity = '0';
-                element.style.transform = 'translateY(20px)';
-                element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-            });
-            
-            // Trigger animation once after small delay
-            setTimeout(animateOnScroll, 300);
+        // Set initial state for animated elements
+        document.querySelectorAll('.about-content, .menu-item, .gallery-item, .contact-info').forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
         });
 
-        // Trigger animation on scroll
         window.addEventListener('scroll', animateOnScroll);
-
-        // Simple form validation for contact form (if added later)
-        function validateForm() {
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
-            
-            if(name === '' || email === '' || message === '') {
-                alert('Por favor, preencha todos os campos.');
-                return false;
-            }
-            
-            return true;
-        }
+        window.addEventListener('load', animateOnScroll);
     </script>
 </body>
 </html>
