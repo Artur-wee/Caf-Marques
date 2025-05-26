@@ -1,115 +1,130 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calm Coffee - O seu refúgio de café</title>
+    <title>Calm Coffee - Specialty Café</title>
     <style>
-        /* Reset and Base Styles */
+        /* Base Styles */
+        :root {
+            --primary: #6F4E37;
+            --secondary: #C4A484;
+            --light: #F5F5DC;
+            --dark: #3E2723;
+            --accent: #8D6E63;
+        }
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Montserrat', sans-serif;
         }
-
+        
         body {
-            background-color: #f9f5f0;
-            color: #3a2e26;
+            background-color: var(--light);
+            color: var(--dark);
             line-height: 1.6;
+            overflow-x: hidden;
         }
-
+        
         /* Typography */
         h1, h2, h3 {
             font-family: 'Playfair Display', serif;
-            font-weight: 700;
-            color: #3a2e26;
+            font-weight: 400;
         }
-
+        
         h1 {
             font-size: 3.5rem;
             margin-bottom: 1rem;
         }
-
+        
         h2 {
             font-size: 2.5rem;
             margin-bottom: 2rem;
             position: relative;
             display: inline-block;
         }
-
+        
         h2::after {
             content: '';
             position: absolute;
             bottom: -10px;
             left: 0;
             width: 50%;
-            height: 3px;
-            background-color: #c7a17a;
+            height: 2px;
+            background-color: var(--primary);
         }
-
+        
         p {
-            font-size: 1.1rem;
             margin-bottom: 1.5rem;
+            font-size: 1.1rem;
         }
-
+        
         /* Layout */
-        section {
-            padding: 5rem 10%;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
         .container {
+            width: 85%;
             max-width: 1200px;
             margin: 0 auto;
+            padding: 2rem 0;
         }
-
-        /* Header & Navigation */
-        header {
+        
+        section {
+            min-height: 100vh;
+            padding: 4rem 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        /* Navigation */
+        nav {
             position: fixed;
             top: 0;
             width: 100%;
-            background-color: rgba(249, 245, 240, 0.9);
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
             z-index: 1000;
-            padding: 1rem 10%;
+            padding: 1rem 0;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
         }
-
-        nav {
+        
+        nav.scrolled {
+            padding: 0.5rem 0;
+            background-color: rgba(255, 255, 255, 0.95);
+        }
+        
+        .nav-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-
+        
         .logo {
-            font-family: 'Playfair Display', serif;
             font-size: 1.8rem;
             font-weight: 700;
-            color: #3a2e26;
+            color: var(--primary);
             text-decoration: none;
+            font-family: 'Playfair Display', serif;
         }
-
+        
         .nav-links {
             display: flex;
             list-style: none;
         }
-
+        
         .nav-links li {
             margin-left: 2rem;
         }
-
+        
         .nav-links a {
-            color: #3a2e26;
             text-decoration: none;
+            color: var(--dark);
             font-weight: 500;
             transition: color 0.3s ease;
             position: relative;
         }
-
+        
         .nav-links a::after {
             content: '';
             position: absolute;
@@ -117,313 +132,383 @@
             left: 0;
             width: 0;
             height: 2px;
-            background-color: #c7a17a;
+            background-color: var(--primary);
             transition: width 0.3s ease;
         }
-
+        
         .nav-links a:hover {
-            color: #c7a17a;
+            color: var(--primary);
         }
-
+        
         .nav-links a:hover::after {
             width: 100%;
         }
-
+        
         /* Hero Section */
-        #home {
-            background: linear-gradient(rgba(58, 46, 38, 0.7), rgba(58, 46, 38, 0.7)), url('https://images.unsplash.com/photo-1445116572660-236099ec97a0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
-            color: #f9f5f0;
+        #hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1445116572660-236099ec97a0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            color: white;
             text-align: center;
-            padding-top: 8rem;
+            position: relative;
         }
-
-        #home h1 {
-            color: #f9f5f0;
-            font-size: 4.5rem;
-            margin-bottom: 1.5rem;
-            animation: fadeIn 1.5s ease;
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
         }
-
-        #home p {
+        
+        .hero-content p {
             font-size: 1.3rem;
-            max-width: 700px;
-            margin: 0 auto 2rem;
-            animation: fadeIn 2s ease;
+            margin-bottom: 2rem;
         }
-
+        
         .btn {
             display: inline-block;
-            background-color: #c7a17a;
-            color: #f9f5f0;
+            background-color: var(--primary);
+            color: white;
             padding: 0.8rem 2rem;
             border-radius: 30px;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 500;
             transition: all 0.3s ease;
-            border: 2px solid #c7a17a;
-            animation: fadeIn 2.5s ease;
+            border: 2px solid var(--primary);
         }
-
+        
         .btn:hover {
             background-color: transparent;
-            color: #c7a17a;
+            color: white;
+            border-color: white;
         }
-
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid white;
+            margin-left: 1rem;
+        }
+        
+        .btn-outline:hover {
+            background-color: white;
+            color: var(--primary);
+        }
+        
         /* About Section */
         #about {
-            background-color: #f9f5f0;
+            background-color: white;
         }
-
+        
         .about-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 3rem;
             align-items: center;
         }
-
-        .about-text {
-            padding-right: 2rem;
-        }
-
-        .about-image {
+        
+        .about-img {
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
-
-        .about-image img {
+        
+        .about-img img {
             width: 100%;
             height: auto;
             display: block;
             transition: transform 0.5s ease;
         }
-
-        .about-image:hover img {
+        
+        .about-img:hover img {
             transform: scale(1.05);
         }
-
+        
         /* Menu Section */
         #menu {
-            background-color: #f0e6d9;
+            background-color: var(--light);
         }
-
-        .menu-container {
+        
+        .menu-intro {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+        }
+        
+        .menu-categories {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
         }
-
+        
         .menu-category {
-            margin-bottom: 3rem;
-        }
-
-        .menu-item {
-            background-color: #f9f5f0;
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-
-        .menu-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        
+        .menu-category:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
-
-        .menu-item h3 {
-            color: #c7a17a;
+        
+        .menu-category h3 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+        
+        .menu-item {
+            margin-bottom: 1.5rem;
+        }
+        
+        .menu-item-header {
+            display: flex;
+            justify-content: space-between;
             margin-bottom: 0.5rem;
         }
-
-        /* Gallery Section */
-        #gallery {
-            background-color: #f9f5f0;
+        
+        .menu-item-name {
+            font-weight: 600;
         }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
+        
+        .menu-item-price {
+            color: var(--primary);
+            font-weight: 700;
         }
-
-        .gallery-item {
-            border-radius: 8px;
-            overflow: hidden;
-            position: relative;
-            height: 250px;
+        
+        .menu-item-desc {
+            font-size: 0.9rem;
+            color: #666;
         }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.1);
-        }
-
+        
         /* Contact Section */
         #contact {
-            background: linear-gradient(rgba(58, 46, 38, 0.8), rgba(58, 46, 38, 0.8)), url('https://maps.googleapis.com/maps/api/staticmap?center=-23.5505,-46.6333&zoom=15&size=800x600&scale=2&maptype=roadmap&markers=color:red%7C-23.5505,-46.6333&key=YOUR_API_KEY') no-repeat center center/cover;
-            color: #f9f5f0;
+            background-color: white;
         }
-
+        
         .contact-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 3rem;
         }
-
+        
         .contact-info h3 {
-            color: #c7a17a;
-            margin-bottom: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
         }
-
-        .contact-info p {
+        
+        .contact-details {
+            margin-bottom: 2rem;
+        }
+        
+        .contact-details p {
+            display: flex;
+            align-items: center;
             margin-bottom: 0.5rem;
         }
-
+        
+        .contact-details i {
+            margin-right: 1rem;
+            color: var(--primary);
+        }
+        
         .social-links {
             display: flex;
-            margin-top: 2rem;
+            gap: 1rem;
         }
-
+        
         .social-links a {
-            display: flex;
+            display: inline-flex;
             align-items: center;
             justify-content: center;
             width: 40px;
             height: 40px;
-            background-color: #c7a17a;
-            color: #f9f5f0;
+            background-color: var(--light);
+            color: var(--primary);
             border-radius: 50%;
-            margin-right: 1rem;
-            text-decoration: none;
             transition: all 0.3s ease;
         }
-
+        
         .social-links a:hover {
-            background-color: #f9f5f0;
-            color: #c7a17a;
-            transform: translateY(-3px);
+            background-color: var(--primary);
+            color: white;
         }
-
+        
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .contact-form textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        .contact-form button {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+        
+        .contact-form button:hover {
+            background-color: var(--dark);
+        }
+        
         /* Footer */
         footer {
-            background-color: #3a2e26;
-            color: #f9f5f0;
+            background-color: var(--dark);
+            color: white;
             text-align: center;
-            padding: 2rem 10%;
+            padding: 2rem 0;
         }
-
+        
         .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .footer-links {
             display: flex;
-            flex-direction: column;
-            align-items: center;
+            justify-content: center;
+            list-style: none;
+            margin: 1rem 0;
         }
-
-        .footer-logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: #f9f5f0;
+        
+        .footer-links li {
+            margin: 0 1rem;
         }
-
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+        
         .copyright {
-            margin-top: 1rem;
             font-size: 0.9rem;
-            opacity: 0.8;
+            color: rgba(255, 255, 255, 0.7);
         }
-
+        
         /* Animations */
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-
+        
+        .fade-in {
+            animation: fadeIn 1s ease forwards;
+        }
+        
+        .delay-1 {
+            animation-delay: 0.2s;
+        }
+        
+        .delay-2 {
+            animation-delay: 0.4s;
+        }
+        
+        .delay-3 {
+            animation-delay: 0.6s;
+        }
+        
         /* Responsive Design */
-        @media (max-width: 992px) {
-            section {
-                padding: 4rem 5%;
-            }
-
-            .about-content, .contact-container {
-                grid-template-columns: 1fr;
-            }
-
-            .about-text {
-                padding-right: 0;
-                margin-bottom: 2rem;
-            }
-        }
-
         @media (max-width: 768px) {
             h1 {
                 font-size: 2.5rem;
             }
-
+            
             h2 {
                 font-size: 2rem;
             }
-
-            .nav-links {
-                display: none;
-            }
-
-            .menu-container {
+            
+            .about-content,
+            .contact-container {
                 grid-template-columns: 1fr;
+            }
+            
+            .about-img {
+                order: -1;
+            }
+            
+            .nav-container {
+                flex-direction: column;
+            }
+            
+            .nav-links {
+                margin-top: 1rem;
+            }
+            
+            .nav-links li {
+                margin: 0 0.5rem;
+            }
+            
+            .hero-buttons {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .btn-outline {
+                margin-left: 0;
             }
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <nav>
-            <a href="#home" class="logo">Calm Coffee</a>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">Calm Coffee</a>
             <ul class="nav-links">
-                <li><a href="#home">Início</a></li>
-                <li><a href="#about">Sobre</a></li>
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#about">About</a></li>
                 <li><a href="#menu">Menu</a></li>
-                <li><a href="#gallery">Galeria</a></li>
-                <li><a href="#contact">Contato</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
-        </nav>
-    </header>
+        </div>
+    </nav>
 
     <!-- Hero Section -->
-    <section id="home">
+    <section id="hero">
         <div class="container">
-            <h1>Calm Coffee</h1>
-            <p>Um refúgio acolhedor onde cada xícara conta uma história e cada momento é uma pausa merecida no seu dia.</p>
-            <a href="#menu" class="btn">Explore Nosso Menu</a>
+            <div class="hero-content fade-in">
+                <h1 class="delay-1">Savor the Moment</h1>
+                <p class="delay-2">Specialty coffee crafted with care in the heart of the city. Where every cup tells a story.</p>
+                <div class="hero-buttons delay-3">
+                    <a href="#menu" class="btn">View Menu</a>
+                    <a href="#contact" class="btn btn-outline">Visit Us</a>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- About Section -->
     <section id="about">
         <div class="container">
-            <h2>Sobre Nós</h2>
             <div class="about-content">
-                <div class="about-text">
-                    <p>Bem-vindo ao Calm Coffee, onde transformamos o simples ato de tomar café em uma experiência memorável. Fundado em 2015, nosso café nasceu da paixão por criar um espaço onde as pessoas pudessem desacelerar e apreciar os pequenos prazeres da vida.</p>
-                    <p>Nossos grãos são cuidadosamente selecionados de fazendas sustentáveis em todo o mundo, torrados localmente para garantir frescor e sabor excepcionais em cada xícara.</p>
-                    <p>Mais do que um café, somos uma comunidade. Um lugar onde histórias são compartilhadas, ideias nascem e amizades são cultivadas.</p>
+                <div class="about-text fade-in">
+                    <h2>Our Story</h2>
+                    <p>Founded in 2015, Calm Coffee began as a small passion project between two friends who shared a love for quality coffee and tranquil spaces. What started as a modest coffee cart has blossomed into a beloved neighborhood café.</p>
+                    <p>We source our beans directly from ethical growers, roast in small batches, and prepare each drink with meticulous attention to detail. Our baristas are trained in the art of coffee making, ensuring every cup meets our high standards.</p>
+                    <p>More than just a coffee shop, we've created a space where you can pause, breathe, and enjoy the simple pleasure of a perfectly brewed cup.</p>
                 </div>
-                <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Fachada do Calm Coffee">
+                <div class="about-img fade-in delay-1">
+                    <img src="https://images.unsplash.com/photo-1517705008128-361805f42e86?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Calm Coffee interior">
                 </div>
             </div>
         </div>
@@ -432,81 +517,106 @@
     <!-- Menu Section -->
     <section id="menu">
         <div class="container">
-            <h2>Nosso Menu</h2>
-            <div class="menu-container">
-                <div class="menu-category">
-                    <h3>Cafés Especiais</h3>
-                    <div class="menu-item">
-                        <h3>Expresso Calm</h3>
-                        <p>Nosso blend exclusivo, com notas de chocolate amargo e nozes, finalizado com um toque cítrico.</p>
-                    </div>
-                    <div class="menu-item">
-                        <h3>Latte Artístico</h3>
-                        <p>Espresso suave com leite vaporizado, adornado com arte latte personalizada.</p>
-                    </div>
-                    <div class="menu-item">
-                        <h3>Cold Brew Serenidade</h3>
-                        <p>Preparado por 18 horas para extrair sabores suaves e menos acidez, servido com gelo.</p>
-                    </div>
-                </div>
-                
-                <div class="menu-category">
-                    <h3>Delícias Doces</h3>
-                    <div class="menu-item">
-                        <h3>Croissant de Amêndoa</h3>
-                        <p>Croissant folhado recheado com creme de amêndoa e coberto com lascas de amêndoas.</p>
-                    </div>
-                    <div class="menu-item">
-                        <h3>Bolo de Café e Nozes</h3>
-                        <p>Bolo úmido com infusão de café, recheio de creme de nozes e cobertura de ganache.</p>
-                    </div>
-                    <div class="menu-item">
-                        <h3>Cookie Tranquilidade</h3>
-                        <p>Cookie de chocolate meio amargo com nozes e uma pitada de sal marinho.</p>
-                    </div>
-                </div>
-                
-                <div class="menu-category">
-                    <h3>Opções Salgadas</h3>
-                    <div class="menu-item">
-                        <h3>Sanduíche da Paz</h3>
-                        <p>Pão de fermentação natural com frango desfiado, abacate, rúcula e maionese de ervas.</p>
-                    </div>
-                    <div class="menu-item">
-                        <h3>Quiche Harmonia</h3>
-                        <p>Quiche de espinafre, queijo de cabra e tomates secos com massa crocante.</p>
-                    </div>
-                    <div class="menu-item">
-                        <h3>Avocado Toast Zen</h3>
-                        <p>Pão integral torrado com abacate amassado, ovos pochê e sementes de gergelim.</p>
-                    </div>
-                </div>
+            <div class="menu-intro fade-in">
+                <h2>Our Menu</h2>
+                <p>We offer a carefully curated selection of coffee drinks, teas, and light bites. All our pastries are baked fresh daily using locally sourced ingredients.</p>
             </div>
-        </div>
-    </section>
-
-    <!-- Gallery Section -->
-    <section id="gallery">
-        <div class="container">
-            <h2>Nossa Atmosfera</h2>
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Interior do café">
+            
+            <div class="menu-categories">
+                <div class="menu-category fade-in">
+                    <h3>Coffee</h3>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Espresso</span>
+                            <span class="menu-item-price">$3.50</span>
+                        </div>
+                        <p class="menu-item-desc">A concentrated coffee beverage brewed by forcing hot water under pressure through finely ground coffee.</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Cappuccino</span>
+                            <span class="menu-item-price">$4.50</span>
+                        </div>
+                        <p class="menu-item-desc">Equal parts espresso, steamed milk, and milk foam for a creamy texture.</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Latte</span>
+                            <span class="menu-item-price">$4.75</span>
+                        </div>
+                        <p class="menu-item-desc">Espresso with steamed milk and a light layer of foam.</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Cold Brew</span>
+                            <span class="menu-item-price">$4.00</span>
+                        </div>
+                        <p class="menu-item-desc">Smooth, cold-extracted coffee served over ice.</p>
+                    </div>
                 </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Preparo de café">
+                
+                <div class="menu-category fade-in delay-1">
+                    <h3>Tea & More</h3>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Matcha Latte</span>
+                            <span class="menu-item-price">$5.00</span>
+                        </div>
+                        <p class="menu-item-desc">Ceremonial grade matcha whisked with steamed milk.</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Chai Latte</span>
+                            <span class="menu-item-price">$4.50</span>
+                        </div>
+                        <p class="menu-item-desc">Spiced black tea with steamed milk and honey.</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Hot Chocolate</span>
+                            <span class="menu-item-price">$4.00</span>
+                        </div>
+                        <p class="menu-item-desc">Rich, velvety chocolate made with real cocoa.</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Iced Tea</span>
+                            <span class="menu-item-price">$3.50</span>
+                        </div>
+                        <p class="menu-item-desc">House-blended black or herbal tea served chilled.</p>
+                    </div>
                 </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Clientes no café">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Detalhes do café">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Café na mesa">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Barista trabalhando">
+                
+                <div class="menu-category fade-in delay-2">
+                    <h3>Pastries</h3>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Croissant</span>
+                            <span class="menu-item-price">$3.50</span>
+                        </div>
+                        <p class="menu-item-desc">Buttery, flaky French-style pastry.</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Almond Croissant</span>
+                            <span class="menu-item-price">$4.50</span>
+                        </div>
+                        <p class="menu-item-desc">Croissant filled with almond cream and topped with sliced almonds.</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Blueberry Muffin</span>
+                            <span class="menu-item-price">$3.75</span>
+                        </div>
+                        <p class="menu-item-desc">Moist muffin packed with fresh blueberries.</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Avocado Toast</span>
+                            <span class="menu-item-price">$7.50</span>
+                        </div>
+                        <p class="menu-item-desc">Sourdough toast with smashed avocado, cherry tomatoes, and microgreens.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -515,27 +625,38 @@
     <!-- Contact Section -->
     <section id="contact">
         <div class="container">
-            <h2>Visite-nos</h2>
+            <h2 class="fade-in">Visit Us</h2>
             <div class="contact-container">
-                <div class="contact-info">
-                    <h3>Horário de Funcionamento</h3>
-                    <p>Segunda a Sexta: 7h - 20h</p>
-                    <p>Sábado e Domingo: 8h - 22h</p>
+                <div class="contact-info fade-in">
+                    <h3>Hours</h3>
+                    <div class="contact-details">
+                        <p><i class="fas fa-clock"></i> Monday - Friday: 7am - 7pm</p>
+                        <p><i class="fas fa-clock"></i> Saturday - Sunday: 8am - 6pm</p>
+                    </div>
                     
-                    <h3>Endereço</h3>
-                    <p>Rua da Paz, 123</p>
-                    <p>Jardim Sereno, São Paulo - SP</p>
-                    <p>CEP: 01234-567</p>
+                    <h3>Location</h3>
+                    <div class="contact-details">
+                        <p><i class="fas fa-map-marker-alt"></i> 123 Serenity Lane, Downtown</p>
+                        <p><i class="fas fa-phone"></i> (555) 123-4567</p>
+                        <p><i class="fas fa-envelope"></i> hello@calmcoffee.com</p>
+                    </div>
                     
-                    <h3>Contato</h3>
-                    <p>contato@calmcoffee.com</p>
-                    <p>(11) 98765-4321</p>
-                    
+                    <h3>Follow Us</h3>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-instagram"></i></a>
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
                     </div>
+                </div>
+                
+                <div class="contact-form fade-in delay-1">
+                    <form>
+                        <input type="text" placeholder="Your Name" required>
+                        <input type="email" placeholder="Your Email" required>
+                        <input type="text" placeholder="Subject">
+                        <textarea placeholder="Your Message" required></textarea>
+                        <button type="submit">Send Message</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -543,66 +664,62 @@
 
     <!-- Footer -->
     <footer>
-        <div class="footer-content">
-            <div class="footer-logo">Calm Coffee</div>
-            <p>Siga-nos nas redes sociais para ficar por dentro das novidades e promoções especiais.</p>
-            <div class="social-links">
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-whatsapp"></i></a>
+        <div class="container">
+            <div class="footer-content">
+                <a href="#" class="logo">Calm Coffee</a>
+                <ul class="footer-links">
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <p class="copyright">© 2023 Calm Coffee. All rights reserved.</p>
             </div>
-            <p class="copyright">© 2023 Calm Coffee. Todos os direitos reservados.</p>
         </div>
     </footer>
 
     <script>
-        // Smooth Scrolling
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+            anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
                     behavior: 'smooth'
                 });
             });
         });
-
-        // Header Scroll Effect
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.style.padding = '0.5rem 10%';
-                header.style.background = 'rgba(58, 46, 38, 0.95)';
-            } else {
-                header.style.padding = '1rem 10%';
-                header.style.background = 'rgba(249, 245, 240, 0.9)';
-            }
-        });
-
-        // Animation on Scroll
-        const animateOnScroll = function() {
-            const elements = document.querySelectorAll('.about-content, .menu-item, .gallery-item, .contact-info');
-            
-            elements.forEach(element => {
-                const elementPosition = element.getBoundingClientRect().top;
-                const screenPosition = window.innerHeight / 1.3;
-                
-                if (elementPosition < screenPosition) {
-                    element.style.opacity = '1';
-                    element.style.transform = 'translateY(0)';
+        
+        // Intersection Observer for scroll animations
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
                 }
             });
-        };
-
-        // Set initial state for animated elements
-        document.querySelectorAll('.about-content, .menu-item, .gallery-item, .contact-info').forEach(element => {
-            element.style.opacity = '0';
-            element.style.transform = 'translateY(20px)';
-            element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        }, {
+            threshold: 0.1
         });
-
-        window.addEventListener('scroll', animateOnScroll);
-        window.addEventListener('load', animateOnScroll);
+        
+        fadeElements.forEach(element => {
+            observer.observe(element);
+        });
     </script>
 </body>
 </html>
